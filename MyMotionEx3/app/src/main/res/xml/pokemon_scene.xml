@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/mewtwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Constraint
+            android:id="@+id/blastoise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Constraint
+            android:id="@+id/charizard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/mewtwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <Constraint
+            android:id="@+id/blastoise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/mewtwo"
+            />
+
+        <Constraint
+            android:id="@+id/charizard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="1.0"
+            app:layout_constraintStart_toEndOf="@id/mewtwo"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:duration="2000">
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@id/mewtwo"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.8"/>
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@id/blastoise"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.9"/>
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@id/charizard"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.9"/>
+            <KeyAttribute
+                app:framePosition="0"
+                app:motionTarget="@id/blastoise"
+                android:scaleY="0.3"
+                android:scaleX="0.3"
+                android:rotation="-50"/>
+            <KeyAttribute
+                app:framePosition="50"
+                app:motionTarget="@id/blastoise"
+                android:scaleY="1.0"
+                android:scaleX="1.0"/>
+            <KeyAttribute
+                app:framePosition="0"
+                app:motionTarget="@id/charizard"
+                android:scaleY="0.3"
+                android:scaleX="0.3"
+                android:rotation="-50"/>
+            <KeyAttribute
+                app:framePosition="50"
+                app:motionTarget="@id/charizard"
+                android:scaleY="1.0"
+                android:scaleX="1.0"/>
+        </KeyFrameSet>
+        <OnClick
+            app:targetId="@id/mewtwo"
+            app:clickAction="toggle" />
+    </Transition>
+</MotionScene>
